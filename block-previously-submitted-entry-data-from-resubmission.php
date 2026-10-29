@@ -3,8 +3,7 @@
  *
  * 1. Duplicate check (embedded form and Edit Entry)
  *    Blocks a submission if the same user already has an entry with the same
- *    Calendar Year (1) + Month (7) + Volunteer Activity Category (5).
- *    Other users are never blocked.
+ *    field so other users are never blocked.
  *
  * 2. Read-only fields (GravityView Edit Entry)
  *    When a logged-in user edits their own entry, fields 1, 7 and 5 are shown but locked,
@@ -12,7 +11,7 @@
  *    Admins editing someone else's entry can still change them (see owner check below).
  *
  */
-class GW_Volunteer_Recognition_Rules {
+class GW_Unique_Field_Combination {
 
 	const FORM_ID   = 17;
 	const FIELD_IDS = array( 1, 7, 5 );
@@ -34,7 +33,7 @@ class GW_Volunteer_Recognition_Rules {
 
 	private static function log( $msg ) {
 		if ( class_exists( 'GFCommon' ) ) {
-			GFCommon::log_debug( 'GW Volunteer Rules: ' . $msg );
+			GFCommon::log_debug( 'GW Unique Field Combination: ' . $msg );
 		}
 	}
 
@@ -216,4 +215,4 @@ class GW_Volunteer_Recognition_Rules {
 	}
 }
 
-add_action( 'init', array( 'GW_Volunteer_Recognition_Rules', 'init' ) );
+add_action( 'init', array( 'GW_Unique_Field_Combination', 'init' ) );
